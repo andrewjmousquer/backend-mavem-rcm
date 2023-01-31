@@ -1,0 +1,52 @@
+logging:
+  file: 
+    name: logs/application.log
+  level:
+    ROOT: INFO
+    com.portal: TRACE
+    org.springframework.web.servlet.mvc.method.annotation: DEBUG
+#security.require-ssl: true
+server:
+  port: 8443
+#  ssl:
+#    key-store: /etc/letsencrypt/live/carbon.sbmtech.com.br/keystore.p12
+#    key-store-password: s2b0m*TECH
+#    key-store-type: PKCS12
+#    key-alias: apache2
+spring:
+  banner:
+    location: banner.txt
+  datasource-portal:
+    driverClassName: com.mysql.cj.jdbc.Driver
+    defaultSchema: carbon.
+    jdbcUrl: jdbc:mysql://localhost:3306/carbon?rewriteBatchedStatements=true&useSSL=false&autoReconnect=true&useTimezone=true&serverTimezone=UTC&allowPublicKeyRetrieval=true
+    username: root
+    password: s2b0m*TECH
+    maxPoolSize: 50
+    minPoolSize: 10
+    maxStatements: 5000
+    testOnBorrow: true
+    validationQuery: SELECT 1
+    testConnectionOnCheckout: false
+    acquireIncrement: 1
+    idleConnectionTestPeriod: 300
+    testConnectionOnCheckin: false
+    preferredTestQuery: SELECT 1
+  messages:
+    basename: i18n/messages
+    encoding: UTF-8
+    fallback-to-system-locale: false
+    use-code-as-default-message: true
+  servlet:
+    multipart:
+      max-file-size: 100MB
+      max-request-size: 100MB
+jwt:
+  secret: TG1hY2hhZG9RdWludGFEb3JTQk0=
+  expiration: 604800
+jasperserver:
+  host: https://carbon.sbmtech.com.br/jasperserver/
+store:
+  location:
+    item: C:\Workspace\carbon\store\item
+    document: C:\Workspace\carbon\store\document

@@ -1,0 +1,9 @@
+package com.portal.enums;
+
+public enum SalesOrderEvents {
+	VALIDATION_BACKOFFICE,
+	DISAPPROVED_BACKOFFICE,
+	APPROVED_BACKOFFICE,
+	FINALIZED_ORDER,
+	CANCELED;
+}

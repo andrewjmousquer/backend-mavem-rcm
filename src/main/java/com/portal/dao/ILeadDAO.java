@@ -1,0 +1,38 @@
+package com.portal.dao;
+
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.data.domain.Pageable;
+
+import com.portal.exceptions.AppException;
+import com.portal.model.Lead;
+
+public interface ILeadDAO extends IBaseDAO<Lead> {
+	
+	public List<Lead> listAll( Pageable pageable ) throws AppException;
+	
+	public List<Lead> find( Lead model, Pageable pageable ) throws AppException;
+	
+	public boolean hasProposalRelationship(Integer ledId) throws AppException;
+	
+	/**
+	 * Usar a função {@link #listAll(Pageable)}
+	 */
+	@Deprecated
+	public List<Lead> list() throws AppException;
+	
+	/**
+	 * Usar a função {@link #find(Lead, Pageable)}
+	 */
+	@Deprecated
+	public Optional<Lead> find( Lead model ) throws AppException; 
+	
+	/**
+	 * Usar a função {@link #search(Lead, Pageable)}
+	 */
+	@Deprecated
+	public List<Lead> search( Lead model ) throws AppException;
+
+	
+}

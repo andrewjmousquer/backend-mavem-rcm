@@ -1,0 +1,1 @@
+Versão 1.x foi depreciada, começar um novo banco a partir da 2.x

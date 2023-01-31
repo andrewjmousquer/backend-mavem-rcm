@@ -1,0 +1,19 @@
+version: 0.0
+os: linux
+files:
+  - source: /dist/
+    destination: /opt/carbon/backend
+hooks:
+  ApplicationStop:
+    - location: DeployScripts/StopService.sh
+      runas: root
+  BeforeInstall:
+    - location: DeployScripts/BackupClear.sh
+      runas: root
+  AfterInstall:
+    - location: DeployScripts/StartService.sh
+      runas: root
+  ApplicationStart:
+    - location: DeployScripts/RunFunctionalTests.sh
+      timeout: 180
+      runas: root

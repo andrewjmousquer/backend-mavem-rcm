@@ -1,0 +1,47 @@
+logging:
+  file: 
+    name: logs/application.log
+  level:
+    ROOT: INFO
+    com.portal: TRACE
+#security.require-ssl: true
+server:
+  port: 8443
+#  ssl:
+#    key-store: /etc/letsencrypt/live/carbon.sbmtech.com.br/keystore.p12
+#    key-store-password: s2b0m*TECH
+#    key-store-type: PKCS12
+#    key-alias: apache2
+spring:
+  banner:
+    location: banner.txt
+  datasource-portal:
+    driverClassName: com.mysql.cj.jdbc.Driver
+    #jdbcUrl: jdbc:mysql://localhost:3306/carbon_static_test?rewriteBatchedStatements=true&useSSL=false&autoReconnect=true&useTimezone=true&serverTimezone=UTC&allowPublicKeyRetrieval=true
+    jdbcUrl: jdbc:mysql://localhost:3306/carbon_leo?rewriteBatchedStatements=true&useSSL=false&autoReconnect=true&useTimezone=true&serverTimezone=UTC&allowPublicKeyRetrieval=true
+    defaultSchema: carbon_leo.
+    username: root
+    password:  sbmroot
+    maxPoolSize: 50
+    minPoolSize: 10
+    maxStatements: 5000
+    testOnBorrow: true
+    validationQuery: SELECT 1
+    testConnectionOnCheckout: false
+    acquireIncrement: 1
+    idleConnectionTestPeriod: 300
+    testConnectionOnCheckin: false
+    preferredTestQuery: SELECT 1
+  messages:
+    basename: i18n/messages
+    encoding: UTF-8
+    fallback-to-system-locale: false
+    use-code-as-default-message: true
+jwt:
+  secret: TG1hY2hhZG9RdWludGFEb3JTQk0=
+  expiration: 604800
+jasperserver:
+  host: http://localhost:8080/jasperserver
+store:
+  location:
+    item: C:\opt\carbon\store\item
